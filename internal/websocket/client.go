@@ -108,7 +108,7 @@ func (c *WebsocketClient) Subscribe(cfg *config.ServerConfig, ctx context.Contex
 		var ID int
 		ID = 3
 		for _, channel := range cfg.Channels {
-			if strings.Contains(channel.Name, "trade") {
+			if strings.Contains(channel.Name, "trade-activity") {
 				for _, asset := range cfg.Assets {
 					ID = ID + 1
 					type_1_asset := strings.ReplaceAll(asset.Name, "_", "")
@@ -120,7 +120,7 @@ func (c *WebsocketClient) Subscribe(cfg *config.ServerConfig, ctx context.Contex
 					indodaxSubscription = append(indodaxSubscription, subscription)
 				}
 			}
-			if strings.Contains(channel.Name, "order_book") {
+			if strings.Contains(channel.Name, "order-book") {
 				for _, asset := range cfg.Assets {
 					ID = ID + 1
 					type_1_asset := strings.ReplaceAll(asset.Name, "_", "")
