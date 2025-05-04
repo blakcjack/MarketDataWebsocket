@@ -2,18 +2,23 @@ package message
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 )
 
 type OrderBookTokoCrypto struct {
-	Pair      string
-	EventTime int64
-	Bid       []any
-	Ask       []any
+	ExchangeName string
+	PairSymbol   string
+	Data         map[string]any
+}
+
+func (obi *OrderBookTokoCrypto) FinalizeData() {
+	log.Printf("[order_book_tokocrypto.go]")
+	// return nil
 }
 
 func (obi *OrderBookTokoCrypto) parseBidData() (float64, float64, error) {
-	bids := obi.Bid
+	bids := obi.Data["b"].([]any)
 	var price float64
 	var volume float64
 	for i, bid := range bids {
@@ -37,7 +42,7 @@ func (obi *OrderBookTokoCrypto) parseBidData() (float64, float64, error) {
 	return price, volume, nil
 }
 
-func (obi *OrderBookTokoCrypto) parseAskData
+// func (obi *OrderBookTokoCrypto) parseAskData
 
 func (obi *OrderBookTokoCrypto) StoreData() error {
 	return nil
