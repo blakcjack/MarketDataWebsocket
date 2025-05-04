@@ -1,0 +1,187 @@
+2025/04/24 00:56:26 Load the configuration..
+2025/04/24 00:56:26 Load the databases...
+2025/04/24 00:56:26 Initializing the client manager ...
+2025/04/24 00:56:26 Starting the client manager ...
+2025/04/24 00:56:26 Processing server: indodax
+2025/04/24 00:56:26 Connected to indodax
+2025/04/24 00:56:26 [indodax] Subscription 0 response: {"id":1,"result":{"client":"3d172e41-6d90-4b9d-95d2-1b70caaea2a8","version":"2.8.7","expires":true,"ttl":201187428}}
+2025/04/24 00:56:26 [indodax] Subscription 1 response: {"id":3}
+2025/04/24 00:56:26 [indodax] Subscription 2 response: {"id":4,"result":{"recoverable":true,"epoch":"1633996657","offset":104245}}
+2025/04/24 00:56:26 [indodax] Subscription 3 response: {"id":5,"result":{"recoverable":true,"epoch":"1633996536","offset":3139680}}
+2025/04/24 00:56:26 [indodax] Subscription 4 response: {"id":6,"result":{"recoverable":true,"epoch":"1733887641","offset":1349611}}
+2025/04/24 00:56:26 [indodax] Subscription 5 response: {"id":7,"result":{"recoverable":true,"epoch":"1733887641","offset":4010264}}
+2025/04/24 00:56:26 [indodax] Subscription 6 response: {"id":8,"result":{"recoverable":true,"epoch":"1658180241","offset":60396510}}
+2025/04/24 00:56:26 [indodax] Subscription 7 response: {"id":9,"result":{"recoverable":true,"epoch":"1733887641","offset":6886943}}
+2025/04/24 00:56:26 [indodax] client indodax has been started on URL: wss://ws3.indodax.com/ws/
+2025/04/24 00:56:26 Processing server: tokocrypto
+2025/04/24 00:56:27 Connected to tokocrypto
+2025/04/24 00:56:27 [tokocrypto] Subscription 0 response: {"id":4,"result":null}
+2025/04/24 00:56:27 [tokocrypto] Subscription 1 response: {"id":5,"result":null}
+2025/04/24 00:56:27 [tokocrypto] Subscription 2 response: {"id":6,"result":null}
+2025/04/24 00:56:27 [tokocrypto] Subscription 3 response: {"id":7,"result":null}
+2025/04/24 00:56:27 [tokocrypto] Subscription 4 response: {"id":8,"result":null}
+2025/04/24 00:56:27 [tokocrypto] Subscription 5 response: {"id":9,"result":null}
+2025/04/24 00:56:28 [tokocrypto] Subscription 6 response: {"id":10,"result":["ethusdt@trade","ethidr@trade","usdtidr@trade","ethusdt@depth5","ethidr@depth5","usdtidr@depth5"]}
+2025/04/24 00:56:28 [tokocrypto] client tokocrypto has been started on URL: wss://stream-toko.2meta.app/ws/
+2025/04/24 00:56:28 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:28 I am processing orderbook message
+2025/04/24 00:56:28 I am processing orderbook message
+2025/04/24 00:56:28 I am processing orderbook message
+2025/04/24 00:56:29 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:29 I am processing orderbook message
+2025/04/24 00:56:29 I am processing orderbook message
+2025/04/24 00:56:29 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:29 I am processing orderbook message
+2025/04/24 00:56:30 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:30 I am processing orderbook message
+2025/04/24 00:56:30 I am processing orderbook message
+2025/04/24 00:56:31 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:31 I am processing orderbook message
+2025/04/24 00:56:31 I am processing orderbook message
+2025/04/24 00:56:31 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:31 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:31 I am processing orderbook message
+2025/04/24 00:56:31 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:32 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:32 I am processing orderbook message
+2025/04/24 00:56:32 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:32 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:33 I am processing orderbook message
+2025/04/24 00:56:33 I am processing orderbook message
+2025/04/24 00:56:34 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:34 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:34 I am processing orderbook message
+2025/04/24 00:56:34 I am processing orderbook message
+2025/04/24 00:56:35 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:35 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:35 I am processing orderbook message
+2025/04/24 00:56:35 I am processing orderbook message
+2025/04/24 00:56:35 I am processing orderbook message
+2025/04/24 00:56:35 I am processing orderbook message
+2025/04/24 00:56:36 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:36 I am processing orderbook message
+2025/04/24 00:56:36 I am processing orderbook message
+2025/04/24 00:56:36 I am processing orderbook message
+2025/04/24 00:56:36 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:37 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:37 I am processing orderbook message
+2025/04/24 00:56:38 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:39 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:39 I am processing orderbook message
+2025/04/24 00:56:39 I am processing orderbook message
+2025/04/24 00:56:40 I am processing orderbook message
+2025/04/24 00:56:40 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:40 I am processing orderbook message
+2025/04/24 00:56:40 I am processing orderbook message
+2025/04/24 00:56:40 I am processing orderbook message
+2025/04/24 00:56:41 I am processing orderbook message
+2025/04/24 00:56:41 I am processing orderbook message
+2025/04/24 00:56:41 I am processing trade message
+2025/04/24 00:56:41 I am processing orderbook message
+2025/04/24 00:56:41 I am processing orderbook message
+2025/04/24 00:56:41 I am processing orderbook message
+2025/04/24 00:56:41 I am processing orderbook message
+2025/04/24 00:56:42 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:42 I am processing trade message
+2025/04/24 00:56:42 I am processing orderbook message
+2025/04/24 00:56:42 I am processing orderbook message
+2025/04/24 00:56:43 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:43 I am processing orderbook message
+2025/04/24 00:56:44 I am processing orderbook message
+2025/04/24 00:56:44 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:44 I am processing orderbook message
+2025/04/24 00:56:45 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:45 I am processing orderbook message
+2025/04/24 00:56:45 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:45 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:45 I am processing orderbook message
+2025/04/24 00:56:45 I am processing orderbook message
+2025/04/24 00:56:45 I am processing orderbook message
+2025/04/24 00:56:46 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:46 I am processing orderbook message
+2025/04/24 00:56:46 I am processing orderbook message
+2025/04/24 00:56:46 I am processing orderbook message
+2025/04/24 00:56:46 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:46 I am processing orderbook message
+2025/04/24 00:56:46 I am processing orderbook message
+2025/04/24 00:56:47 I am processing orderbook message
+2025/04/24 00:56:47 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:47 I am processing orderbook message
+2025/04/24 00:56:47 I am processing orderbook message
+2025/04/24 00:56:48 I am processing trade message
+2025/04/24 00:56:48 I am processing orderbook message
+2025/04/24 00:56:48 I am processing orderbook message
+2025/04/24 00:56:48 I am processing orderbook message
+2025/04/24 00:56:49 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:49 I am processing orderbook message
+2025/04/24 00:56:49 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:49 I am processing orderbook message
+2025/04/24 00:56:49 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:50 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:50 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:51 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:51 I am processing orderbook message
+2025/04/24 00:56:51 I am processing orderbook message
+2025/04/24 00:56:51 I am processing orderbook message
+2025/04/24 00:56:51 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:51 I am processing orderbook message
+2025/04/24 00:56:51 I am processing orderbook message
+2025/04/24 00:56:51 I am processing orderbook message
+2025/04/24 00:56:52 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:52 I am processing orderbook message
+2025/04/24 00:56:52 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:52 I am processing orderbook message
+2025/04/24 00:56:53 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:53 I am processing orderbook message
+2025/04/24 00:56:54 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:54 I am processing orderbook message
+2025/04/24 00:56:54 I am processing orderbook message
+2025/04/24 00:56:55 I am processing orderbook message
+2025/04/24 00:56:55 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:55 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:56:55 I am processing orderbook message
+2025/04/24 00:56:55 I am processing orderbook message
+2025/04/24 00:56:55 I am processing orderbook message
+2025/04/24 00:56:56 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:56 I am processing orderbook message
+2025/04/24 00:56:56 I am processing orderbook message
+2025/04/24 00:56:56 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:56 I am processing orderbook message
+2025/04/24 00:56:57 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:57 I am processing orderbook message
+2025/04/24 00:56:58 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:56:58 I am processing orderbook message
+2025/04/24 00:56:59 I am processing orderbook message
+2025/04/24 00:56:59 I am processing orderbook message
+2025/04/24 00:56:59 I am processing trade message
+2025/04/24 00:57:00 I am processing orderbook message
+2025/04/24 00:57:00 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:57:00 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:57:00 I am processing orderbook message
+2025/04/24 00:57:00 I am processing orderbook message
+2025/04/24 00:57:00 I am processing orderbook message
+2025/04/24 00:57:00 I am processing trade message
+2025/04/24 00:57:01 I am processing orderbook message
+2025/04/24 00:57:01 I am processing orderbook message
+2025/04/24 00:57:01 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:57:02 Failed to handle message error unmarshalling order book message for usdt_idr from tokocrypto order book channel
+2025/04/24 00:57:02 I am processing orderbook message
+2025/04/24 00:57:03 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:57:03 I am processing orderbook message
+2025/04/24 00:57:03 I am processing orderbook message
+2025/04/24 00:57:03 I am processing orderbook message
+2025/04/24 00:57:04 I am processing orderbook message
+2025/04/24 00:57:04 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:57:05 I am processing orderbook message
+2025/04/24 00:57:05 I am processing orderbook message
+2025/04/24 00:57:05 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:57:05 I am processing orderbook message
+2025/04/24 00:57:05 I am processing orderbook message
+2025/04/24 00:57:05 I am processing orderbook message
+2025/04/24 00:57:06 I am processing orderbook message
+2025/04/24 00:57:06 I am processing orderbook message
+2025/04/24 00:57:06 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel
+2025/04/24 00:57:06 I am processing orderbook message
+2025/04/24 00:57:06 I am processing orderbook message
+2025/04/24 00:57:06 I am processing trade message
+2025/04/24 00:57:07 Failed to handle message error unmarshalling order book message for eth_idr from tokocrypto order book channel

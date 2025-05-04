@@ -1,0 +1,106 @@
+---
+
+---
+
+# Infrastruktur Websocket [Go]
+
+## File Konfigurasi
+
+File konfigurasi adalah file json yang meliputi berbagai berbagai parameter yang akan kita gunakan untuk mengeksekusi websocket. Di sini informasi seperti source websocket tempat kita berlangganan meliputi namanya, urlnya, channelnya, dan terakhir asset-assetnya. File ini dapat kita ubah parameternya tanpa harus mengubah kodingan yang sudah kita tetapkan. Sehingga perubahan dapat lebih mudah, efisien, dan akan bersifat SSOT.
+
+Konfigurasi disimpan ke dalam file json dengan nama: `config.json`. Struktur dari config.json adalah sebagai berikut.
+
+```json
+{
+    "webosckets": [
+        {
+            "name": "websocket1",
+            "url": "wss://www.websocket1.com",
+            "channels": [
+                "trade",
+                "orderbook"
+            ],
+            "assets": [
+                "eth_idr",
+                "eth_usdt",
+                "used_idr"
+            ]
+        },
+        {
+            "name": "websocket2",
+            "url": "wss://www.websocket2.com",
+            "channels": [
+                "trade",
+                "orderbook"
+            ],
+            "assets": [
+                "eth_idr",
+                "eth_usdt",
+                "used_idr"
+            ]
+        }
+    ],
+    "log_level": "info",
+    "environtment": "development"
+}
+```
+
+## Object Konfigurasi
+
+Ini adalah konfigurasi yang tercermin di kode Go yang kita buat. Berbeda dengan file config.json yang kita buat di step pertama, di sini kita akan menerjemahkan file konfigurasi yang kita miliki menjadi sebuah objek konfigurasi. Pada dasarnya objek konfigurasi akan memiliki semua elemen konfigurasi dari file konfigurasi ditambah dengan beberapa konfigurasi tambahan.
+
+Object-object berikut di buat untuk menangani konfigurasi yang dibutukan.
+
+### Config
+
+Object ini adalah object utama yang akan diexport. Object ini akan berisi 2 anggota object:
+
+* Databases: Berisi list database yang dapat kita gunakan untuk terhubung dengan database yang miliki. Pada dasarnya, database yang tersedia adalah sqlite dan postgres. Objek ini merupakan kumpulan dari objek `database`.
+
+* Servers: Berisi list websocket server yang dapat kita hubungi. Saat ini kita akan mengembangkan websocket untuk terhubung dengan indodax dan tokocrypto. Objek ini merupakan kumpulan dari `server`.
+
+### Function
+
+### dbList
+
+## Websocket Client
+
+Setelah membuat file konfigurasi untuk *websocket*, kita selanjutnya bisa membuat *client* untuk *websocket* yang sedang kita bangun. *Websocket* *client* ini yang akan membuat koneksi awal dengan *server* yang akan kita tuju. *Client* akan melakukan aktivitas utama seperti: menghubungkan kita dengan server, melakukan *autentikasi* (**jika diperlukan**), melakukan *ping pong* (**jika diperlukan**), melakukan ***subscribe*** ke *channel* yang kita ingin dapatkan informasinya, lalu "mendengarkan" pesan yang dikirimkan oleh *server*, dan terakhir setelah mendapatkan pesan, client akan **"memanggil"** ***Message Handler*** untuk memproses pesan yang kita peroleh. *Client* kita juga harus memiliki mekanisme untuk *unsubscribe channel* yang kita dengarkan dan kemudian menutup/memutus koneksi.
+
+Berikut adalah flow kerja client:
+
+Connect -> Authenticate -> Ping Pong -> Subscribe -> Listen -> Send Message to MessageHandler -> Unsubscribe -> Disconnect
+
+### Connect
+
+*Connect* adalah kemampuan klien untuk menghubungkan kita dengan *websocket server* milik *provider*. Di go, biasanya kita menggunakan DefaultDialler.Dial untuk membuka koneksi dengan *websocket*.
+
+### Authenticate
+
+Autentikasi adalah proses untuk mengenalkan diri kita kepada server. Biasanya hal ini dilakukan oleh server untuk memastikan bahwa kita memang telah memahami apa yang sedang kita lakukan.
+
+Tidak semua server webscoket membutuhkan autentikasi, sehingga feature ini hanya untuk beberapa websocket saja.
+
+### Ping Pong
+
+Dalam praktek komunikasi dengan websocket, kita harus memastikan bahwa kita dan server dalam keadaan **terus** terhubung. Hal ini memastikan agar kita tidak membuang resource secara percuma untuk mendengarkan informasi di channel yang koneksinya sudah terputus.
+
+Terputusnya suatu koneksi websocket bisa karena banyak faktor, seperti masalah jaringan, kendala process yang terputus di tengah jalan, server yang memiliki mekanisme untuk melakukan pemutusan diri secara otomatis, dan sebagainya.
+
+### Subscribe
+
+### Listen
+
+### Send Message t
+
+## Message Handler
+
+*Message handler* akan menerima pesan dari *websocket client*. Yang pertama kali dilakukan oleh message handler adalah menyimpan pesan yang diterima ke dalam object *raw message*. Object ini akan meyimpan informasi penting yang berkaitan dengan pesan yang diterima, seperti pesan ini dari websocket server yang mana, channel-nya apa, asset yang diterima adalah asset apa, dsb. Kemudian, *message handler* akan melakukan parsing terhadap pesan yang diterima.
+
+## Database Manager
+
+## Manager
+
+## Main Function
+
+

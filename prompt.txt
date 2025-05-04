@@ -1,0 +1,167 @@
+I want to create a go (using golang language) project where the project will connect to 2 difference websocket urls.
+Each websocket url will be able to:
+
+* Listen to several channels where the way they are subscribing are difference for each channel (the parameter and so on). Those channels must be listened in sequence.
+It means the first subscription must be success to continue to second subscription.
+
+* First websocket requires to connect to several channels.
+
+    * authentication: with the following payload:
+
+        {
+            "params": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE5NDY2MTg0MTV9.UR1lBM6Eqh0yWz-PVirw1uPCxe60FdchR8eNVdsskeo"
+            },
+            "id": 1
+        }
+
+    * Ping Pong with this following payload:
+
+        {
+            "method": 7,
+            "id": 3
+        }
+
+    * Subscribe to first channel:
+
+        {
+            "method": 1,
+            "params": {
+                "channel": "market:trade-activity-ethidr"
+            },
+            "id": 4
+        }
+    
+    * Subscribe to second channel:
+
+        {
+            "method": 1,
+            "params": {
+                "channel": "market:trade-activity-ethusdt"
+            },
+            "id": 5
+        }
+
+    * subscribe to third channel:
+
+        {
+            "method": 1,
+            "params": {
+                "channel": "market:trade-activity-usdtidr"
+            },
+            "id": 6
+        }
+
+    * Subscribe to fourth channel
+
+        {
+            "method": 1,
+            "params": {
+                "channel": "market:order-book-ethidr"
+            },
+            "id": 7 // is a random request ID specified by WebSocket client
+        }
+
+    * Subscribe to fifth channel
+
+        {
+            "method": 1,
+            "params": {
+                "channel": "market:order-book-ethusdt"
+            },
+            "id": 8 // is a random request ID specified by WebSocket client
+        }
+
+    * Subscribe to sixth channel:
+
+        {
+            "method": 1,
+            "params": {
+                "channel": "market:order-book-usdtidr"
+            },
+            "id": 9 // is a random request ID specified by WebSocket client
+        }
+
+* Second websocket will also connect to several channel, please make the placeholder for them.
+
+* They will also receive different format for the message from each websocket urls. The message format from each channel will be very different.
+
+* For some type of message, they must store the message to the database.
+
+* When they receive the message that has key channel and the channel is market:order-book-btcidr (btc-idr must be dynamic based on the subscription) they will first take bid and ask, and then sum up all the coin volume for each bid and ask (grouped per bid and ask). In this example is btc_volume.
+Then, for each bid and ask, please calcuate the weighted price from 20% of the volume (top 20% highest for bid and top 20% lowest for ask). After that, please save the information to the database. What you should save is:
+datetime (when the command is executed), source (from what websocket it came from), symbol (in this example is btc-idr), type (bid or ask), price (highest from bid, and lowest from ask), and price_20_pct (weighted price from 20% of the volume).
+This is the example of the message that will be received
+
+    {
+        "result": {
+            "channel": "market:order-book-btcidr",
+            "data": {
+                "data": {
+                    "pair": "btcidr",
+                    "ask": [{
+                            "btc_volume": "0.11035661",
+                            "idr_volume": "35251984",
+                            "price": "319437000"
+                        },
+                        {
+                            "btc_volume": "0.20000000",
+                            "idr_volume": "63950800",
+                            "price": "319754000"
+                        }
+                    ],
+                    "bid": [{
+                            "btc_volume": "0.61427265",
+                            "idr_volume": "196220798",
+                            "price": "319436000"
+                        },
+                        {
+                            "btc_volume": "0.00697822",
+                            "idr_volume": "2228655",
+                            "price": "319373000"
+                        }
+                    ]
+                },
+                "offset": 67409
+            }
+        }
+    }
+
+* When they receive the message that has key channel and the channel is market:trade-activity-btcidr (btc-idr must be dynamic based on the subscription). they will stor this information to the database:
+datetime (second record from "data" key in the message), source (from what websocket it came from), symbol (in this example is btc-idr), type (fourh record from "data" key in the message), volume (7th record from "data" key in the messsage),
+price (fifth record in the "data" key in the message). The message example will be like this:
+
+    {
+        "result": {
+            "channel": "market:trade-activity-btcidr",
+            "data": {
+                "data": [
+                    [
+                        "btcidr",       // pair
+                        1635274052,     // epoch timestamp in second
+                        21999427,       // sequence number
+                        "buy",          // side (buy/sell)
+                        881991000,      // filled price
+                        "29740",        // IDR volume (BTC/IDR)
+                        "0.00003372"    // BTC volume (BTC/IDR)
+                    ]
+                ],
+                "offset": 243556
+            }
+        }
+    }
+
+* The database I want to use is sqlite where it is located on my D: directory, the database name is trading.db
+
+* The table name for channel : market:order-book-btcidr (remember btcidr is dynamic based on our channel request) is order_book
+and the name of table for channel: market:trade-activity-btcidr (remember btcidr is dynamic based on our channel request) is trade_activity
+
+* The second websocket is not used yet, please put placeholder for them. just give a comment in the document what i should do when I want to use them.
+
+* Please enable the ability to reconnect whenever the connection is disconnected from server.
+
+* Please avoid reused declaration for each variable name. you better cached and log the variable name you have used.
+
+How do you suggest this go project structure so that there is no repetition when writing the code (enhance the use of generics) and it will be modular.
+
+Please use minimal explanation and just write the code for this whole session.

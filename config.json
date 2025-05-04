@@ -1,0 +1,32 @@
+{
+    "servers": {
+        "indodax": {
+            "url": "wss://ws3.indodax.com/ws/",
+            "name": "Indodax",
+            "assets": [
+                {"asset_name": "eth_usdt"},
+                {"asset_name": "eth_idr"},
+                {"asset_name": "usdt_idr"}
+            ],
+            "channels": [
+                {"channel_name": "market:trade-activity-"},
+                {"channel_name": "market:order-book-"}
+            ]
+        },
+        "tokoCrypto": {
+            "url": "wss://stream-toko.2meta.app/ws/",
+            "name": "tokoCrypto",
+            "assets": [
+                {"asset_name": "eth_usdt"},
+                {"asset_name": "eth_idr"},
+                {"asset_name": "usdt_idr"}
+            ],
+            "channels": [
+                {"channel_name": "@trade"},
+                {"channel_name": "@depth5"}
+            ]
+        }
+    },
+    "log_level": "info",
+    "environment": "development" 
+}
