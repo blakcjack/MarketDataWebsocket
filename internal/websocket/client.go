@@ -229,7 +229,7 @@ func (c *WebsocketClient) ListenMesages(ctx context.Context) {
 		default:
 			_, msg, err := c.conn.ReadMessage()
 			if err != nil {
-				log.Printf("[%s] Error reading message: %v", c.ServerConfig.Name, err)
+				log.Printf("[client.go] [%s] Error reading message: %v", c.ServerConfig.Name, err)
 				select {
 				case <-c.stopCh:
 					return
@@ -239,113 +239,33 @@ func (c *WebsocketClient) ListenMesages(ctx context.Context) {
 				}
 			}
 
+			if msg == nil {
+				log.Printf("[client.go] No message received")
+				return
+			}
+
 			rawMsg, err := message.CreateMessage(c.ServerConfig.Name, c.ServerConfig.Url, c.ServerConfig.Assets, msg)
 			if err != nil {
 				log.Printf("Error creating raw message: %v", err)
 			}
-			err = rawMsg.HandleMessage(ctx)
-			if err != nil {
-				log.Printf("[client.go] Error Translating message: %v", err)
+			// let's send the next process message handler
+			switch c.ServerConfig.Name {
+			case "indodax":
+				err = rawMsg.HandleIndodaxMessage(ctx)
+				if err != nil {
+					log.Printf("[client.go] Error Translating message: %v", err)
+				}
+			case "tokoCrypto":
+				err = rawMsg.HandleTokoCryptoMessage(ctx)
+				if err != nil {
+					log.Printf("[client.go] Error Translating message: %v", err)
+				}
+			default:
+				log.Printf("[client.go] unregistered server name: %s", c.ServerConfig.Name)
 			}
 		}
 	}
 }
-
-// let's enable process message
-// func (c *WebsocketClient) handleMessages(server string, data []byte) {
-// 	var jsonMsg map[string]interface{}
-// 	if err := json.Unmarshal(data, &jsonMsg); err != nil {
-// 		log.Printf("Error parsing message: %v", err)
-// 		return
-// 	}
-
-// 	rawMsg := models.CreateMessage(server, c.ServerConfig.Url, jsonMsg)
-
-// 	// log.Printf("The raw message is: %s", rawMsg)
-
-// 	if server == "indodax" {
-// 		result, ok := rawMsg.Data["result"].(map[string]interface{})
-// 		if !ok {
-// 			return
-// 		}
-// 		channel, ok := result["channel"].(string)
-// 		if !ok {
-// 			// log.Printf("[%s] No channel found in message: %s", server, string(data))
-// 			return
-// 		}
-// 		// var channelName string = ""
-// 		// var coinName string = ""
-// 		if strings.HasPrefix(channel, "market:order-book-") {
-// 			parts := strings.Split(channel, "-")
-// 			rawMsg.ChannelName = "order_book"
-// 			var lastPart string = ""
-// 			if len(parts) > 0 {
-// 				lastPart = parts[len(parts)-1]
-// 			}
-
-// 			for _, coin := range c.ServerConfig.Coins {
-// 				if strings.ReplaceAll(coin.Coin_name, "_", "") == lastPart {
-// 					rawMsg.CoinName = coin.Coin_name
-// 				}
-// 			}
-// 			var orderBook models.OrderBookIndodax
-// 			if err := json.Unmarshal(data, &orderBook); err != nil {
-// 				log.Printf("[%s] Errror unmaarshalling order book message: %v", server, err)
-// 				return
-// 			}
-
-// 			// logic to process the message
-// 			err := orderBook.ProcessMessage(server)
-// 			if err != nil {
-// 				log.Printf("[%s] error: %v", server, err)
-// 				return
-// 			}
-// 		}
-// 		if strings.HasPrefix(channel, "market:trade-activity-") {
-// 			parts := strings.Split(channel, "-")
-// 			// channelName = "trade"
-// 			var lastPart string = ""
-// 			if len(parts) > 0 {
-// 				lastPart = parts[len(parts)-1]
-// 			}
-
-// 			for _, coin := range c.ServerConfig.Coins {
-// 				if strings.ReplaceAll(coin.Coin_name, "_", "") == lastPart {
-// 					// coinName = coin.Coin_name
-// 				}
-// 			}
-
-// 			// logic to store trade data to database
-// 		}
-// 	} else if server == "tokocrypto" {
-// 		// log.Printf("[%s] Processing message: %s", server, data)
-// 		ch, ok := jsonMsg["e"].(string)
-// 		if !ok {
-// 			log.Print(jsonMsg)
-// 			return
-// 		}
-// 		symbol, _ := jsonMsg["s"].(string)
-// 		// var channelName string = ""
-// 		// var coinName string = ""
-// 		if ch == "depthUpdate" {
-// 			// channelName = "order_book"
-// 			for _, coin := range c.ServerConfig.Coins {
-// 				if strings.ReplaceAll(coin.Coin_name, "_", "") == strings.ToLower(symbol) {
-// 					// coinName = coin.Coin_name
-// 				}
-// 			}
-// 			// logic to store trade data to database
-// 		} else if ch == "trade" {
-// 			// channelName = "trade"
-// 			for _, coin := range c.ServerConfig.Coins {
-// 				if strings.ReplaceAll(coin.Coin_name, "_", "") == strings.ToLower(symbol) {
-// 					// coinName = coin.Coin_name
-// 				}
-// 			}
-// 			// logic to store trade data to database
-// 		}
-// 	}
-// }
 
 // Add the capability to reconnect to the server
 func (c *WebsocketClient) reconnect() {
