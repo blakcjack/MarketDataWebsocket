@@ -75,7 +75,7 @@ func InitPostgresDB(cfg *config.DatabaseConfig, schema string) (*PostgresDB, err
 		id SERIAL PRIMARY KEY,
 		exchange_name VARCHAR(50) NOT NULL,
 		pair_symbol VARCHAR(25) NOT NULL,
-		order_type VARCHAR(10) NOT NULL,
+		order_position VARCHAR(10) NOT NULL,
 		price DOUBLE PRECISION NOT NULL,
 		volume DOUBLE PRECISION NOT NULL,
 		created_datetime TIMESTAMP WITH TIME ZONE DEFAULT NOW()
